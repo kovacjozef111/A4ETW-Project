@@ -11,14 +11,19 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('forum');
 });
 
-Auth::routes();
+Route::get('/forum', function () {
+    return view('forum');
+});
 
+
+Route::resource('/threads', 'ThreadController');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::resource('/users', 'UserController');
 
-Route::get('/home', 'HomeController@index')->name('home');

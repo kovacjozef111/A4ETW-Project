@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
+use App\User;
 use Illuminate\Http\Request;
 
-class ThreadController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        return view('threads.create');
+        return view('users.create');
     }
 
     /**
@@ -35,29 +35,31 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
-        // server side validation
         $validatedData = $request->validate([
-            'title' => 'required|max:256|min:4|unique:threads,title',
-            'threadText' => 'required|min:16',
+            'nick' => 'required|max:64|min:6|unique:users,nick',
+            'email' => 'required|max:256|unique:users,email',
+            'password' => 'required|confirmed|min:6',
         ]);
 
-        $newThread = new Thread();
-        $newThread->title = $request->title;
-        $newThread->body = $request->threadText;
-        $newThread->created_at = date("Y-m-d H:i:s");
-        $newThread->updated_at = date("Y-m-d H:i:s");
-        $newThread->save();
+        $newUser = new User();
+        $newUser->nick = $request->nick;
+        $newUser->email = $request->email;
+        $newUser->password = bcrypt($request->password);
+        $newUser->admin = isset($request->admin);
+        $newUser->created_at = date("Y-m-d H:i:s");
+        $newUser->updated_at = date("Y-m-d H:i:s");
+        $newUser->save();
 
-        return redirect(route('threads.index'));
+        return redirect(route('users.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show($id)
     {
         //
     }
@@ -65,10 +67,10 @@ class ThreadController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit($id)
     {
         //
     }
@@ -77,10 +79,10 @@ class ThreadController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Thread $thread)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -88,10 +90,10 @@ class ThreadController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Thread  $thread
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($id)
     {
         //
     }
