@@ -18,7 +18,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-light" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#">All</a>
+                    <a class="dropdown-item" href="{{ route('users.index') }}">All</a>
                     <a class="dropdown-item" href="{{ route('users.create') }}">New</a>
                 </div>
             </li>

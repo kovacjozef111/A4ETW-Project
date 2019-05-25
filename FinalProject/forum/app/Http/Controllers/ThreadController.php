@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Thread;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ThreadController extends Controller
 {
@@ -14,7 +15,8 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        return view('forum');
+        $allThreads = Thread::all();
+        return view('threads.index', [ 'allThreads' => $allThreads ]);
     }
 
     /**
@@ -95,4 +97,5 @@ class ThreadController extends Controller
     {
         //
     }
+
 }

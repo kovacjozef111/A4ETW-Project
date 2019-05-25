@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('forum');
+        $allUsers = User::all();
+        return view('users.index', [ 'allUsers' => $allUsers]);
     }
 
     /**

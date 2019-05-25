@@ -10,4 +10,8 @@ class Thread extends Model
     {
         return $this->hasMany('App\Reply', 'thread_id');
     }
+
+    public function creator(){
+        return $this->belongsTo('App\User', 'creator_id');
+    }
 }
