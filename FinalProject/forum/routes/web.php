@@ -21,9 +21,11 @@ Route::get('/forum', function () {
     return view('forum');
 });
 
-
+Route::resource('/users', 'UserController');
 Route::resource('/threads', 'ThreadController');
+Route::resource('/replies', 'ReplyController');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/users', 'UserController');
+
 

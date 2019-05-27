@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Thread;
+use App\Thread as Thread;
+use App\Reply as Reply;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -15,7 +16,7 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $allThreads = Thread::all();
+        $allThreads = Thread::paginate(10);
         return view('threads.index', [ 'allThreads' => $allThreads ]);
     }
 
@@ -59,9 +60,11 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function show(Thread $thread)
+    public function show($id)
     {
-        //
+      $foundThread = Thread::find($id);
+      $allReplies = Reply::where('thread_id', '=', $id)->paginate(20);
+      return view('threads.show', ['thread' => $foundThread, 'allReplies' => $allReplies]);
     }
 
     /**
@@ -93,9 +96,12 @@ class ThreadController extends Controller
      * @param  \App\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy($id)
     {
-        //
+        Thread::where('id', '=', $id)->delete();
+        Reply::where('thread_id','=', $id)->delete();
+ 
+        return redirect(route('threads.index'));
     }
 
 }

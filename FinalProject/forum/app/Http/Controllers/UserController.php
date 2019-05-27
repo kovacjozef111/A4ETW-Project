@@ -14,8 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $allUsers = User::all();
-        return view('users.index', [ 'allUsers' => $allUsers]);
+        $allUsers = User::paginate(25);
+        $userCount = User::all()->count();
+        return view('users.index', [ 'allUsers' => $allUsers, 'userCount' => $userCount]);
     }
 
     /**
@@ -96,6 +97,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Thread::where('id', '=', $id)->delete();
     }
 }

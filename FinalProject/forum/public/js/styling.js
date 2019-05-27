@@ -1,11 +1,8 @@
 var colors = new Array(
-    [27, 14, 114],
-    [43, 3, 91],
-    [0, 48, 22],
-    [52, 59, 66],
-    [1, 117, 1],
-    [96, 15, 15],
-    [96, 15, 89]);
+    [253, 253, 253],
+    [180, 180, 180],
+    [230, 230, 230],
+    [165, 165, 165]);
   
   var step = 0;
 
@@ -15,8 +12,6 @@ var colors = new Array(
   // current color right
   // next color right
   var colorIndices = [0,1,2,3];
-  
-  //transition speed
   var gradientSpeed = 0.002;
   
   function updateGradient()

@@ -1,9 +1,11 @@
 @extends('layouts.adminLayout')
 
 @section('content')
-<div class="container">
+<div class="container createForm">
 
-    <h1 class="my-5">Create New Thread</h1>
+    <h1 class="my-3">Create New Thread</h1>
+    <hr>
+    <hr>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -26,11 +28,13 @@
 
         <div class="form-group">
             <label for="threadText">Thread Text</label>
-            <input type="text" class="form-control" name="threadText" id="threadText" aria-describedby="helpId" placeholder="">
+            <textarea type="text" class="form-control" name="threadText" id="threadText" aria-describedby="helpId" placeholder="" rows="5"></textarea>
             <small id="helpId" class="form-text text-muted">... Body of New Thread...</small>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group text-right">
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
     </form>
 </div>
 @endsection

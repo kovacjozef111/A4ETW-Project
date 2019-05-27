@@ -1,9 +1,11 @@
 @extends('layouts.adminLayout')
 
 @section('content')
-<div class="container">
+<div class="container createForm">
 
-    <h1 class="my-5">Create New User</h1>
+    <h1 class="my-3">Create New User</h1>
+    <hr>
+    <hr>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -42,12 +44,17 @@
             <small id="helpId" class="form-text text-muted">... Password Confirm...</small>
         </div>
 
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="admin" aria-describedby="helpId" id="admin">
-            <label class="form-check-label" for="admin">Admin</label>
+        <div class="form-row marginBottomLight">
+            <div class="col">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="admin" aria-describedby="helpId" id="admin">
+                    <label class="form-check-label" for="admin">Admin</label>
+                </div>
+            </div>
+            <div class="text-right pull-right col">
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
 @endsection

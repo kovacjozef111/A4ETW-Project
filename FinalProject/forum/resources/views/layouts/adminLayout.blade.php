@@ -16,21 +16,22 @@
 
 <body>
   <div id="gradient">
-    <div class="fixed-top topBar">
-      @include('includes.header')
+    @include('includes.header')
+
+    <div class="topBar position-sticky sticky-top">
       @include('includes.navbar')
     </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-10 offset-sm-1 mainBlock">
-          @yield('content')
-        </div>
-      </div>
+    <div class="container mainBlock card bg-dark" id="greyCard">
+      @yield('content')
     </div>
 
-    <div class="fixed-bottom botBar">
-      @include('includes.footer')
+    <div class=" container fixed-bottom botBar">
+      <div class="row">
+        <div class="col-sm-12">
+          @include('includes.footer')
+        </div>
+      </div>
     </div>
   </div>
 

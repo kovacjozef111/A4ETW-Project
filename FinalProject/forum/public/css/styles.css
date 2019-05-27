@@ -54,10 +54,15 @@
     height: 100%;
 }
 
+
+
 body {
     background-color: #000000;
     padding: 0px;
     margin: 0px;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
 }
 
 #gradient {
@@ -68,21 +73,184 @@ body {
 }
 
 .topBar {
-    opacity: 0.95;   
+    opacity: 0.95;
 }
 
 .botBar {
     opacity: 0.95;
+    width: 100%;
+}
+
+.page-footer{
+    max-width: 100%;
+    width: 100%;
+}
+
+.card-header {
+    padding: 0px !important;
+    background: #343B42;
+    opacity: 0.97;
+}
+
+.card-footer {
+    padding: 0px !important;
+    background: #343B42;
+    opacity: 0.97;
+}
+
+.card-body {
+    background: #FFF;
+}
+
+.card {
+    border-radius: 1px 2px 6px;
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cardSmallText {
+    margin: 0;
+}
+
+.list-group-item {
+    background: rgba(255, 255, 255, 0);
+    border: none;
+}
+
+.fa-trash-alt {
+    color: red !important;
+    padding: 0px 5px;
+}
+
+.noSidePadding {
+    padding: 10px 0px 10px 0px;
+}
+
+.noMargin {
+    margin: 0px 0px 0px 0px !important;
+}
+
+.btn-dark, .btn-dark:hover, .btn-dark:active, .btn-dark:visited {
+    background-color: rgb(68, 0, 89) !important;
+    border-color: rgba(255, 255, 255);
+    color: rgba(255, 255, 255);
+}
+
+.createForm {
+    border-radius: 2px;
+    background: #FFF;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.active .page-link {
+    background-color: rgb(68, 0, 89) !important;
+    border-color: rgb(68, 0, 89) !important;
+}
+
+.noPadding {
+    padding: 0px 0px 0px 0px !important;
+}
+
+.customLink {
+    text-decoration: none;
+    color: rgb(68, 0, 89);
+    text-shadow: 0 0 2px #FFF, 0 0 2px #FFF;
+}
+
+@keyframes linkTransform {
+    0% {
+        color: rgb(68, 0, 89);
+        text-shadow: 0 0 2px #FFF, 0 0 2px #FFF;
+    }
+    100% {
+        color: white;
+        text-shadow: 0 0 2px rgb(68, 0, 89), 0 0 2px rgb(68, 0, 89);
+    }
+}
+
+.customLink:hover, .customLink:active {
+    color: rgb(68, 0, 89);
+    text-shadow: 0 0 2px #FFF, 0 0 2px #FFF;
+    animation-name: linkTransform;
+    animation: linkTransform 1s infinite;
+    animation-direction: alternate;
+    text-decoration: none;
+}
+
+.banner {
+    width: 100%;
+    max-height: 250px;
+}
+
+.maxWidth {
+    width: 100%;
+}
+
+.bannerText {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.custom-toggler.navbar-toggler {
+    color: white;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .mainBlock{
-    background: rgba(255, 255, 255, 0.5)
+    margin-bottom: 100px;
+    margin-top: 100px;
+    border-radius: 5px 5px 0px 0px;
 }
 
-.card-header{
-    padding: 0px !important;
+.marginBottomLight{
+    margin-bottom: 16px;
 }
 
-.card-footer{
-    padding: 0px !important;
+.longRowBreak{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.page-link, .page-link:hover{
+    color: rgb(68, 0, 89);
+}
+
+.page-link-active{
+    color: white;
+}
+
+.mainCardHeader{
+    margin-left: 0px;
+    padding: 20px 10px 20px 10px !important;
+    border-radius: 5px 5px 0px 0px !important;
+}
+
+.fa-plus-square{
+    color: green;
+    padding: 0px 10px;
+    margin-top: 15px;
+}
+
+.fa-comment-dots{
+    color: blue;
+}
+
+#greyCard{
+    background: rgba(250, 250, 250, 0.9);
+    border: none;
+    background-color: rgba(250, 250, 250, 0.9);
+}
+
+.paddingLeft{
+    padding-left: 10px;
+}
+
+.fa-chevron-circle-left{
+    color: green;
 }

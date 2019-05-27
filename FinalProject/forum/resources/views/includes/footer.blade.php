@@ -12,7 +12,8 @@
     </div>
     <div class="row">
       <div class="col-12 mr-auto mt-2 mt-lg-0">
-        <strong class="text-light">Jozef Kováč - A4TEW 2019</strong>
+        <strong class="text-light">Jozef Kováč - <a href="https://fai.utb.cz/en/" class="customLink">A4TEW</a>
+        </strong>
       </div>
     </div>
   </div>
