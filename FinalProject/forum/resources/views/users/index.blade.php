@@ -45,7 +45,7 @@
                                         <p class="cardSmallText">Posts: {{$user->replies->count()}}</p>
                                     </small>
                                 </div>
-                                <a href="{{ route('users.destroy', ['id'=>$user->id]) }}" style="text-decoration:none">
+                                <a href='users/delete/{{$user->id}}' style="text-decoration:none">
                                     <div style="display: inline-block">
                                         <i class="fas fa-trash-alt"></i>
                                     </div>
@@ -61,10 +61,6 @@
                                 <div class="card-text noSidesPadding">
                                     <strong style="display:inline-block">E-mail: </strong>
                                     <p style="display:inline-block" class="noMargin">{{$user->email}}</p>
-                                </div>
-                                <div class="card-text noSidesPadding">
-                                    <strong style="display:inline-block">Password Hash: </strong>
-                                    <p style="display:inline-block" class="noMargin">{{$user->password}}</p>
                                 </div>
                                 <div class="card-text noSidesPadding">
                                     <strong style="display:inline-block">Admin Privileges: </strong>

@@ -25,6 +25,10 @@ Route::resource('/users', 'UserController');
 Route::resource('/threads', 'ThreadController');
 Route::resource('/replies', 'ReplyController');
 
+Route::get('/users/delete/{id}','UserController@destroy');
+Route::get('/threads/delete/{id}','ThreadController@destroy');
+Route::get('/replies/delete/{id}/','ReplyController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 

@@ -97,6 +97,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        Thread::where('id', '=', $id)->delete();
+        User::where('id', '=', $id)->delete();
+
+        return redirect(route('users.index'));
     }
 }

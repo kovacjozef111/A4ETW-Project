@@ -74,7 +74,7 @@
                                 </span>
                             </div>
                             <div class="col-sm-6 offset-4 ml-auto text-right">
-                                <a href="{{ route('replies.destroy', ['reply'=>$reply]) }}" style="text-decoration:none">
+                                <a href='../replies/delete/{{$reply->id}}' style="text-decoration:none">
                                     <div style="display: inline-block">
                                         <i class="fas fa-trash-alt"></i>
                                     </div>
@@ -111,12 +111,23 @@
 
 <div class="row card-footer">
     <div class="col-sm-10 offset-1">
-        <form action="{{ route('replies.store', ['thread'=>$thread]) }}" method="post">
+        <form action="{{ route('replies.store', ['threadID'=>$thread->id]) }}" method="post">
             @csrf
 
             <h1 class="display-5 text-white">
                 Post Your Reply:
             </h1>
+            <hr class="hrWhite">
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
             <div class="form-group">
                 <textarea type="text" class="form-control" name="replyText" id="replyText" aria-describedby="helpId" placeholder="" rows="5"></textarea>

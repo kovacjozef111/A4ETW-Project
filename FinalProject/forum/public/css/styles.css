@@ -54,8 +54,6 @@
     height: 100%;
 }
 
-
-
 body {
     background-color: #000000;
     padding: 0px;
@@ -81,7 +79,7 @@ body {
     width: 100%;
 }
 
-.page-footer{
+.page-footer {
     max-width: 100%;
     width: 100%;
 }
@@ -136,7 +134,7 @@ body {
     color: rgba(255, 255, 255);
 }
 
-.btn-link, .btn-link:hover, .btn-link:active, .btn-link:visited{
+.btn-link, .btn-link:hover, .btn-link:active, .btn-link:visited {
     text-decoration: none;
     color: rgb(68, 0, 89) !important;
 }
@@ -207,55 +205,59 @@ body {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
-.mainBlock{
+.mainBlock {
     margin-bottom: 100px;
     margin-top: 100px;
     border-radius: 5px 5px 0px 0px;
 }
 
-.marginBottomLight{
+.marginBottomLight {
     margin-bottom: 16px !important;
 }
 
-.longRowBreak{
+.longRowBreak {
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
-.page-link, .page-link:hover{
+.page-link, .page-link:hover {
     color: rgb(68, 0, 89);
 }
 
-.page-link-active{
+.page-link-active {
     color: white;
 }
 
-.mainCardHeader{
+.mainCardHeader {
     margin-left: 0px;
     padding: 20px 10px 20px 10px !important;
     border-radius: 5px 5px 0px 0px !important;
 }
 
-.fa-plus-square{
+.fa-plus-square {
     color: green;
     padding: 0px 10px;
     margin-top: 15px;
 }
 
-.fa-comment-dots{
+.fa-comment-dots {
     color: blue;
 }
 
-#greyCard{
+#greyCard {
     background: rgba(250, 250, 250, 0.9);
     border: none;
     background-color: rgba(250, 250, 250, 0.9);
 }
 
-.paddingLeft{
+.paddingLeft {
     padding-left: 10px;
 }
 
-.fa-chevron-circle-left{
+.fa-chevron-circle-left {
     color: green;
+}
+
+.hrWhite {
+    border-top: 1px solid white;
 }

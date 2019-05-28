@@ -55,7 +55,7 @@
                                         <i class="fas fa-comment-dots"></i>
                                     </div>
                                 </a>
-                                <a href="{{ route('threads.destroy', ['id'=>$thread->id]) }}" style="text-decoration:none">
+                                <a href='threads/delete/{{$thread->id}}' style="text-decoration:none">
                                     <div style="display: inline-block">
                                         <i class="fas fa-trash-alt"></i>
                                     </div>
