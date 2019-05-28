@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Reply as Reply;
 use App\Thread as Thread;
 use Illuminate\Http\Request;
@@ -32,9 +33,25 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Thread $thread)
     {
-        //
+        $validatedData = $request->validate([
+            'replyText' => 'required|min:16',
+        ]);
+
+        $newReply = new Reply();
+        $newReply->body = $request->replyText;
+        $newReply->thread_id = $thread->id;
+        if (Auth::check()) {
+            $newReply->creator_id = Auth::user()->id;
+        }
+        $newReply->created_at = date("Y-m-d H:i:s");
+        $newReply->updated_at = date("Y-m-d H:i:s");
+        $newReply->save();
+
+        $thread->updated_at = date("Y-m-d H:i:s");
+
+        return redirect(route('threads.show/' . $thread));
     }
 
     /**

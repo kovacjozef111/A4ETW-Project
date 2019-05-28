@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout')
+@extends('layouts.app')
 
 
 @section('content')
@@ -65,7 +65,11 @@
                             <div class="col-sm-6 mr-auto">
                                 <span>
                                     <small class="text-white">
-                                        <p class="cardSmallText">Creator: {{$reply->creator->nick}}</p>
+                                        @if(isset($reply->creator))
+                                        <p class="cardSmallText">Creator: {{$thread->creator->nick}}</p>
+                                        @else
+                                        <p class="cardSmallText">Creator: <i>Deleted User</i> </p>
+                                        @endif
                                     </small>
                                 </span>
                             </div>
@@ -102,6 +106,27 @@
             @endforeach
         </ul>
         {{ $allReplies->links() }}
+    </div>
+</div>
+
+<div class="row card-footer">
+    <div class="col-sm-10 offset-1">
+        <form action="{{ route('replies.store', ['thread'=>$thread]) }}" method="post">
+            @csrf
+
+            <h1 class="display-5 text-white">
+                Post Your Reply:
+            </h1>
+
+            <div class="form-group">
+                <textarea type="text" class="form-control" name="replyText" id="replyText" aria-describedby="helpId" placeholder="" rows="5"></textarea>
+                <small id="helpId" class="form-text text-muted">... Text Of New Reply ...</small>
+            </div>
+
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+        </form>
     </div>
 </div>
 

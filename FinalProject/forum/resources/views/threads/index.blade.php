@@ -1,4 +1,4 @@
-@extends('layouts.adminLayout')
+@extends('layouts.app')
 
 
 @section('content')
@@ -36,7 +36,11 @@
                             <div class="col-sm-6 mr-auto">
                                 <span>
                                     <small class="text-white">
+                                        @if(isset($thread->creator))
                                         <p class="cardSmallText">Creator: {{$thread->creator->nick}}</p>
+                                        @else
+                                        <p class="cardSmallText">Creator: <i>Deleted User</i> </p>
+                                        @endif
                                     </small>
                                 </span>
                             </div>

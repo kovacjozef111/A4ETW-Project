@@ -136,6 +136,11 @@ body {
     color: rgba(255, 255, 255);
 }
 
+.btn-link, .btn-link:hover, .btn-link:active, .btn-link:visited{
+    text-decoration: none;
+    color: rgb(68, 0, 89) !important;
+}
+
 .createForm {
     border-radius: 2px;
     background: #FFF;
@@ -209,7 +214,7 @@ body {
 }
 
 .marginBottomLight{
-    margin-bottom: 16px;
+    margin-bottom: 16px !important;
 }
 
 .longRowBreak{
