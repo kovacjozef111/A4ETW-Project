@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use DB;
 use App\Reply as Reply;
 use App\Thread as Thread;
 use Illuminate\Http\Request;
@@ -14,6 +14,11 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     { }
 
@@ -33,28 +38,25 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $threadID)
+    public function store(Request $request, $id)
     {
         $validatedData = $request->validate([
             'replyText' => 'required|min:16',
         ]);
 
-        $newReply = new Reply();
-        $newReply->body = $request->replyText;
-        $newReply->thread_id = $threadID;
+        dd($id);
 
-        if (Auth::check()) {
-            $newReply->creator_id = Auth::user()->id;
-        }
+        $data = [
+            'body' => $request->replyText,
+        ];
 
-        $newReply->created_at = date("Y-m-d H:i:s");
-        $newReply->updated_at = date("Y-m-d H:i:s");
-        $newReply->save();
+        // na relationship 'replies' vytvor Reply s predpripravenymi datami
+        $thread->replies()->create($data);
 
-        
-        Thread::where('id', '=', $threadID)->updated_at = date("Y-m-d H:i:s");
+        // touch() model Thread co sposobi automaticku zmenu 'updated_at'
+        $thread->touch();
 
-        return redirect(route('threads.show', ['id'=>$threadID]));
+        return redirect(route('threads.show', ['id' => $thread->id]));
     }
 
     /**
@@ -102,8 +104,9 @@ class ReplyController extends Controller
         $reply = Reply::find($id);
         $threadID = $reply->thread_id;
 
-        Thread::where('id', '=', $threadID)->updated_at = date("Y-m-d H:i:s");
-        Reply::where('id','=', $id)->delete();
+        DB::table('threads')
+            ->where('id', $threadID)
+            ->update(['updated_at' => date("Y-m-d H:i:s")]);
 
         return redirect(route('threads.show', ['id'=>$threadID]));
     }

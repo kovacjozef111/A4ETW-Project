@@ -17,11 +17,16 @@
                 Total Threads: {{$allThreads->count()}}
             </p>
         </div>
+        @if(null !== Auth::user())
+        @if(Auth::user()->admin == true)
         <a href="{{ route('threads.create') }}">
             <div style="display: inline-block">
                 <i class="far fa-plus-square fa-3x"></i>
             </div>
         </a>
+        @endif
+        @endif
+
     </div>
 </div>
 
@@ -55,11 +60,15 @@
                                         <i class="fas fa-comment-dots"></i>
                                     </div>
                                 </a>
+                                @if(null !== Auth::user())
+                                @if(Auth::user()->admin == true)
                                 <a href='threads/delete/{{$thread->id}}' style="text-decoration:none">
                                     <div style="display: inline-block">
                                         <i class="fas fa-trash-alt"></i>
                                     </div>
                                 </a>
+                                @endif
+                                @endif
                             </div>
                         </div>
                         <div class="row card-body">

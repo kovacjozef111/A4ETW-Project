@@ -13,23 +13,24 @@
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('forum');
-});
-
-Route::get('/forum', function () {
-    return view('forum');
-});
+Route::get('/', 'ThreadController@index');
+Route::get('/forum', 'ThreadController@index');
 
 Route::resource('/users', 'UserController');
 Route::resource('/threads', 'ThreadController');
 Route::resource('/replies', 'ReplyController');
 
-Route::get('/users/delete/{id}','UserController@destroy');
-Route::get('/threads/delete/{id}','ThreadController@destroy');
 Route::get('/replies/delete/{id}/','ReplyController@destroy');
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+//safe in controller constructor
+Route::get('/users/delete/{id}','UserController@destroy');
+
+// need safeguarding on-route
+Route::middleware(['authAdmin'])->group(function () {
+    // Route::get('/threads/create', 'ThreadController@create');
+    Route::get('/threads/delete/{id}','ThreadController@destroy');
+});
 
 

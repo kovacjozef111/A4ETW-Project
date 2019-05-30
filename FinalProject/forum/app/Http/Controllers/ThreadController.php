@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Thread as Thread;
 use App\Reply as Reply;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class ThreadController extends Controller
 {

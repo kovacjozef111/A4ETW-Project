@@ -14,7 +14,11 @@
                 <div class="col-sm-6 mr-auto">
                     <span>
                         <small class="text-white">
+                            @if(isset($thread->creator))
                             <p class="cardSmallText">Creator: {{$thread->creator->nick}}</p>
+                            @else
+                            <p class="cardSmallText">Creator: <i>Deleted User</i> </p>
+                            @endif
                         </small>
                     </span>
                 </div>
@@ -66,7 +70,7 @@
                                 <span>
                                     <small class="text-white">
                                         @if(isset($reply->creator))
-                                        <p class="cardSmallText">Creator: {{$thread->creator->nick}}</p>
+                                        <p class="cardSmallText">Creator: {{$reply->creator->nick}}</p>
                                         @else
                                         <p class="cardSmallText">Creator: <i>Deleted User</i> </p>
                                         @endif
@@ -74,11 +78,23 @@
                                 </span>
                             </div>
                             <div class="col-sm-6 offset-4 ml-auto text-right">
+                                @if(null !== Auth::user())
+                                @if(Auth::user()->admin == true)
                                 <a href='../replies/delete/{{$reply->id}}' style="text-decoration:none">
                                     <div style="display: inline-block">
                                         <i class="fas fa-trash-alt"></i>
                                     </div>
                                 </a>
+                                @elseif(isset($reply->creator))
+                                @if(Auth::user()->id == $reply->creator->id)
+                                <a href='../replies/delete/{{$reply->id}}' style="text-decoration:none">
+                                    <div style="display: inline-block">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </div>
+                                </a>
+                                @endif
+                                @endif
+                                @endif
                             </div>
                         </div>
                         <div class="row card-body">
@@ -111,7 +127,7 @@
 
 <div class="row card-footer">
     <div class="col-sm-10 offset-1">
-        <form action="{{ route('replies.store', ['threadID'=>$thread->id]) }}" method="post">
+        <form action="{{ route('replies.store', ['id' => $thread->id]) }}" method="post">
             @csrf
 
             <h1 class="display-5 text-white">

@@ -4,9 +4,9 @@
 use App\User as User;
 use App\Thread as Thread;
 
-use Illuminate\Support\Str;
+
 use Faker\Generator as Faker;
-use SebastianBergmann\Environment\Console;
+
 
 /*
 |--------------------------------------------------------------------------
