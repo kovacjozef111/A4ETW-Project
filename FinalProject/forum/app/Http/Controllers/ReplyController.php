@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Auth;
 use App\Reply as Reply;
 use App\Thread as Thread;
 use Illuminate\Http\Request;
@@ -38,23 +39,34 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $validatedData = $request->validate([
             'replyText' => 'required|min:16',
         ]);
 
-        dd($id);
+        $thread = Thread::find($request->id);
 
-        $data = [
-            'body' => $request->replyText,
-        ];
+        $reply = new Reply();
+        $user = Auth::user();
+            if (is_null($user)) {
+                return;
+            }
+            else{
+                $reply->creator_id = $user->id;
+            }
 
-        // na relationship 'replies' vytvor Reply s predpripravenymi datami
-        $thread->replies()->create($data);
+        $reply->thread_id = $thread->id;
+        $reply->created_at = date("Y-m-d H:i:s");
+        $reply->updated_at = date("Y-m-d H:i:s");
+        $reply->body = $request->replyText;
+        $reply->save();
 
-        // touch() model Thread co sposobi automaticku zmenu 'updated_at'
-        $thread->touch();
+        DB::table('threads')
+        ->where('id', $thread->id)
+        ->update(['updated_at' => date("Y-m-d H:i:s")]);
+
+
 
         return redirect(route('threads.show', ['id' => $thread->id]));
     }

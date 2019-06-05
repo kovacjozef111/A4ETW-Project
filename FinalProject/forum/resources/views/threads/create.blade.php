@@ -17,19 +17,17 @@
     </div>
     @endif
 
-    <form action="{{ route('threads.store') }}" method="post">
+    <form action="{{ route('threads.store') }}" method="post" id="createThreadForm">
         @csrf
 
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="">
-            <small id="helpId" class="form-text text-muted">...Title of New Thread...</small>
+            <input type="text" class="form-control" name="title" id="title" aria-describedby="helpId" placeholder="Enter Thread Title...">
         </div>
 
         <div class="form-group">
             <label for="threadText">Thread Text</label>
-            <textarea type="text" class="form-control" name="threadText" id="threadText" aria-describedby="helpId" placeholder="" rows="5"></textarea>
-            <small id="helpId" class="form-text text-muted">... Body of New Thread...</small>
+            <textarea type="text" class="form-control" name="threadText" id="threadText" aria-describedby="helpId" placeholder="Enter Thread Body..." rows="5"></textarea>
         </div>
 
         <div class="form-group text-right">

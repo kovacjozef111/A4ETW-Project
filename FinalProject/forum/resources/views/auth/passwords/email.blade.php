@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container createForm">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+        <div class="col-md-12">
+            <h1 class="my-3">{{ __('Reset Password') }}</h1>
+            <hr>
+            <hr>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +15,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('password.email') }}">
+                    <form method="POST" action="{{ route('password.email') }}" id="passwordResetForm2">
                         @csrf
 
                         <div class="form-group row">
@@ -33,7 +34,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

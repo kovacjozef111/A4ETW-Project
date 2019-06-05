@@ -127,7 +127,7 @@
 
 <div class="row card-footer">
     <div class="col-sm-10 offset-1">
-        <form action="{{ route('replies.store', ['id' => $thread->id]) }}" method="post">
+        <form action="{{ route('replies.store', ['id' => $thread->id]) }}" method="post" id="createReplyForm">
             @csrf
 
             <h1 class="display-5 text-white">

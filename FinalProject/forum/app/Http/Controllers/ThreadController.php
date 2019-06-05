@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('authAdmin')->only(['create', 'delete']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +35,7 @@ class ThreadController extends Controller
      */
     public function create()
     {
+
         return view('threads.create');
     }
 

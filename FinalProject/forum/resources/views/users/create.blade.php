@@ -17,31 +17,27 @@
     </div>
     @endif
 
-    <form action="{{ route('users.store') }}" method="post">
+    <form action="{{ route('users.store') }}" method="post" id="createUserForm">
         @csrf
 
         <div class="form-group">
             <label for="nick">Nick</label>
-            <input type="text" class="form-control" name="nick" id="nick" aria-describedby="helpId" placeholder="">
-            <small id="helpId" class="form-text text-muted">...Nick...</small>
+            <input type="text" class="form-control" name="nick" id="nick" aria-describedby="helpId" placeholder="Nick...">
         </div>
 
         <div class="form-group">
             <label for="email">E-mail</label>
-            <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="">
-            <small id="helpId" class="form-text text-muted">...E-mail...</small>
+            <input type="text" class="form-control" name="email" id="email" aria-describedby="helpId" placeholder="E-mail...">
         </div>
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" aria-describedby="helpId" placeholder="">
-            <small id="helpId" class="form-text text-muted">... Password...</small>
+            <input type="password" class="form-control" id="password" name="password" aria-describedby="helpId" placeholder="Password...">
         </div>
 
         <div class="form-group">
             <label for="password_confirmation">Password Confirmation</label>
-            <input type="password" class="form-control" name="password_confirmation" aria-describedby="helpId" placeholder="">
-            <small id="helpId" class="form-text text-muted">... Password Confirm...</small>
+            <input type="password" class="form-control" id="password-confirm" name="password_confirmation" aria-describedby="helpId" placeholder="Confirm Password...">
         </div>
 
         <div class="form-row marginBottomLight">

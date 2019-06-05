@@ -5,7 +5,7 @@
 <div class="row card-header mainCardHeader">
     <div class="col-sm-6 mr-auto">
         <span>
-            <h1 class="text-white display-1">
+            <h1 class="text-white display-3">
                 Users
             </h1>
         </span>

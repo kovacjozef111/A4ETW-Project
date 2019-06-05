@@ -8,7 +8,7 @@
             <hr>
             <hr>
 
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" id="formRegister">
                 @csrf
 
                 <div class="form-group row">

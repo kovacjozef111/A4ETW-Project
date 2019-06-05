@@ -9,7 +9,7 @@
             <hr>
 
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" id="formRegister">
                 @csrf
 
                 <div class="form-group row">

@@ -27,10 +27,3 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //safe in controller constructor
 Route::get('/users/delete/{id}','UserController@destroy');
 
-// need safeguarding on-route
-Route::middleware(['authAdmin'])->group(function () {
-    // Route::get('/threads/create', 'ThreadController@create');
-    Route::get('/threads/delete/{id}','ThreadController@destroy');
-});
-
-
